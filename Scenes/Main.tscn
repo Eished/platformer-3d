@@ -96,6 +96,9 @@ albedo_color = Color(1, 0.9137255, 0.46666667, 1)
 material = SubResource("StandardMaterial3D_50glp")
 size = Vector3(0.1, 0.1, 0.1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erwvk"]
+size = Vector2(350, 450)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frkhe"]
 albedo_color = Color(1, 0.5254902, 0.7529412, 1)
 metallic = 0.85
@@ -160,7 +163,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1894538322 instance=ExtResource("1_r150o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028293848, -0.29070902, 0.18565273)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028293848, 1.1915591, 0.18565273)
 
 [node name="Ground" type="Node3D" parent="." unique_id=1977228182]
 
@@ -473,10 +476,46 @@ grow_vertical = 2
 theme = ExtResource("9_vy5pj")
 text = "主菜单"
 
+[node name="VirtualJoystick" type="VirtualJoystick" parent="UI" unique_id=2026713712]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -1059.0
+offset_right = 941.0
+offset_bottom = -16.0
+grow_vertical = 0
+joystick_mode = 1
+joystick_size = 188.0
+tip_size = 100.0
+visibility_mode = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="UI" unique_id=1634491383]
+position = Vector2(1464, 536)
+scale = Vector2(2.546874, 2.350625)
+shape = SubResource("RectangleShape2D_erwvk")
+action = "ui_accept"
+visibility_mode = 1
+
+[node name="Label" type="Label" parent="UI" unique_id=554994000]
+offset_left = 1681.0
+offset_top = 364.0
+offset_right = 1907.0
+offset_bottom = 541.0
+theme_override_colors/font_color = Color(0.28974146, 0.28974146, 0.28974146, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 26
+text = "提示：
+键盘TAB切换鼠标焦点，ESC查看菜单
+触屏左侧控制方向
+点击右侧空白跳跃"
+autowrap_mode = 2
+
 [node name="Obstacle" parent="." unique_id=1801536714 instance=ExtResource("12_grg3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.175125, 4.5948935, -54.7861)
 
-[node name="Obstacle" parent="Obstacle" index="0" unique_id=726772112]
+[node name="Obstacle" parent="Obstacle" index="0" unique_id=1632175578]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.15049934, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_frkhe")
 surface_material_override/1 = SubResource("StandardMaterial3D_1p5hy")
@@ -505,8 +544,8 @@ is_final_checkpoint = true
 
 [connection signal="body_entered" from="DeathZone" to="GameManager" method="respawn_player"]
 [connection signal="body_entered" from="JumpPad" to="JumpPad" method="_on_body_entered"]
-[connection signal="pressed" from="UI/Restart" to="GameManager" method="restart"]
 [connection signal="pressed" from="UI/Restart" to="GameManager" method="_on_restart_pressed"]
+[connection signal="pressed" from="UI/Restart" to="GameManager" method="restart"]
 [connection signal="pressed" from="UI/Menu" to="GameManager" method="_on_menu_pressed"]
 
 [editable path="Obstacle"]
