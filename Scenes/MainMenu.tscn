@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dycm7iop78da1" path="res://Scripts/main_menu.gd" id="1_ghw46"]
 [ext_resource type="PackedScene" uid="uid://qyjru1us1dd5" path="res://Assets/Character/Player.glb" id="2_8saeu"]
 [ext_resource type="PackedScene" uid="uid://ctl5vm6s2g4y4" path="res://Assets/Models/collectible_coin.gltf" id="2_ghw46"]
+[ext_resource type="Environment" uid="uid://cf1lxrkqdtclj" path="res://environment.tres" id="5_df05h"]
 
 [node name="Node3D" type="Node3D" unique_id=1216677101]
 script = ExtResource("1_ghw46")
@@ -21,7 +22,7 @@ transform = Transform3D(0.9170601, 0, 0.39874908, 0, 1, 0, -0.39874908, 0, 0.917
 [node name="Player" parent="." unique_id=1259446377 instance=ExtResource("2_8saeu")]
 transform = Transform3D(0.8338858, 0, -0.551937, 0, 1, 0, 0.551937, 0, 0.8338858, -0.097515106, 4.0000277, 0.048790455)
 
-[node name="Skeleton3D" parent="Player/Rig" parent_id_path=PackedInt32Array(1259446377, 985929569) index="0" unique_id=492770504]
+[node name="Skeleton3D" parent="Player/Rig" parent_id_path=PackedInt32Array(1259446377, 688057563) index="0" unique_id=1366579650]
 bones/0/rotation = Quaternion(-8.557133e-09, 1.2043154e-07, -2.0610973e-15, 1)
 bones/1/position = Vector3(-3.7283793e-22, 0.39206377, 1.271645e-15)
 bones/1/rotation = Quaternion(-2.1391724e-15, 0.043157768, 1.8626456e-09, 0.9990683)
@@ -78,16 +79,16 @@ bones/39/rotation = Quaternion(-0.7071068, -7.0124045e-08, -7.0124074e-08, 0.707
 bones/40/position = Vector3(-0.51084375, 0.788312, 0.059736874)
 bones/40/rotation = Quaternion(-0.75825274, -2.682209e-07, 0.65196073, 2.2351742e-08)
 
-[node name="handslot_l" parent="Player/Rig/Skeleton3D" index="0" unique_id=974023957]
+[node name="handslot_l" parent="Player/Rig/Skeleton3D" index="0" unique_id=409300184]
 transform = Transform3D(2.1954716e-07, 0.2628633, 0.96483296, 0.9999997, -1.2218951e-06, 1.576833e-07, 1.2186529e-06, 0.964833, -0.26286334, 0.5077682, 0.6367043, -0.018521417)
 
-[node name="handslot_r" parent="Player/Rig/Skeleton3D" index="1" unique_id=2011550518]
+[node name="handslot_r" parent="Player/Rig/Skeleton3D" index="1" unique_id=1838672043]
 transform = Transform3D(7.0403e-07, -0.14989457, -0.988702, -0.99999994, -1.2218952e-06, -4.3803288e-07, -1.2003562e-06, 0.98870176, -0.1498945, -0.49106088, 0.64102876, 0.10659523)
 
-[node name="chest" parent="Player/Rig/Skeleton3D" index="2" unique_id=275889771]
+[node name="chest" parent="Player/Rig/Skeleton3D" index="2" unique_id=2108349410]
 transform = Transform3D(0.9962748, -3.7218175e-09, 0.08623534, 2.2459636e-09, 1, 1.721128e-08, -0.08623534, -1.695348e-08, 0.9962748, -2.110141e-09, 0.9590291, -1.6321923e-08)
 
-[node name="AnimationPlayer" parent="Player" index="1" unique_id=2111363854]
+[node name="AnimationPlayer" parent="Player" index="1" unique_id=401473891]
 autoplay = &"Idle"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1175116490]
@@ -123,6 +124,15 @@ anchor_right = 0.56927085
 anchor_bottom = 0.6787037
 text = "退出游戏"
 metadata/_edit_use_anchors_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=985111279]
+environment = ExtResource("5_df05h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1210950515]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.137
+light_indirect_energy = 0.608
+shadow_enabled = true
 
 [connection signal="pressed" from="CanvasLayer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/exit" to="." method="_on_exit_pressed"]

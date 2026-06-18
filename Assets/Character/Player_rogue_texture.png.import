@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjfawl0bnr10x"
 path.s3tc="res://.godot/imported/Player_rogue_texture.png-2f3e88608c1d75140f3da48af662b43b.s3tc.ctex"
+path.etc2="res://.godot/imported/Player_rogue_texture.png-2f3e88608c1d75140f3da48af662b43b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Character/Player_rogue_texture.png"
-dest_files=["res://.godot/imported/Player_rogue_texture.png-2f3e88608c1d75140f3da48af662b43b.s3tc.ctex"]
+dest_files=["res://.godot/imported/Player_rogue_texture.png-2f3e88608c1d75140f3da48af662b43b.s3tc.ctex", "res://.godot/imported/Player_rogue_texture.png-2f3e88608c1d75140f3da48af662b43b.etc2.ctex"]
 
 [params]
 
