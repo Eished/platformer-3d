@@ -49,7 +49,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.5, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(12.377, 0.191, -37.26), Vector3(12.377, 0.191, -46.7)]
+"values": [Vector3(12.377, 0.191, -37.26), Vector3(12.377, 0.191, -43.81)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pbw6q"]
@@ -131,7 +131,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_frkhe"]
 resource_name = "rotate"
-length = 4.0
+length = 3.0000000000000004
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -140,7 +140,7 @@ tracks/0/path = NodePath("Obstacle:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 1.5707964, 0), Vector3(0, 7.8539815, 0)]
@@ -163,7 +163,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1894538322 instance=ExtResource("1_r150o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028293848, 1.1915591, 0.18565273)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028293848, -0.2885635, 0.18565273)
 
 [node name="Ground" type="Node3D" parent="." unique_id=1977228182]
 
@@ -171,7 +171,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028293848, 1.1915591, 0.18
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, 0)
 
 [node name="Cube_Prototype_Large_A3" parent="Ground" unique_id=952546626 instance=ExtResource("2_idj7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, -3.9973974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, -3.9973974)
 
 [node name="Cube_Prototype_Large_A4" parent="Ground" unique_id=1011859179 instance=ExtResource("2_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, -7.9747014)
@@ -203,9 +203,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.363129, -3.3, -54.739845)
 [node name="Cube_Prototype_Large_A14" parent="Ground" unique_id=988141852 instance=ExtResource("2_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.363129, -3.3, -50.739845)
 
-[node name="Cube_Prototype_Large_A12" parent="Ground" unique_id=1013051668 instance=ExtResource("2_idj7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.363129, -3.3, -50.739845)
-
 [node name="Cube_Prototype_Large_A16" parent="Ground" unique_id=91786544 instance=ExtResource("2_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.065586, -3.3, -54.739845)
 
@@ -221,14 +218,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.087017, 0.45316887, -54.7
 [node name="Cube_Prototype_Large_A17" parent="Ground" unique_id=1166056388 instance=ExtResource("2_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.087017, 0.45316887, -54.739845)
 
-[node name="Cube_Prototype_Large_A19" parent="Ground" unique_id=1894274214 instance=ExtResource("2_idj7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.087017, 0.45316887, -58.739845)
-
 [node name="Cube_Prototype_Large_A20" parent="Ground" unique_id=704741657 instance=ExtResource("2_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.087017, 0.45316887, -58.739845)
-
-[node name="Cube_Prototype_Large_A18" parent="Ground" unique_id=1249421670 instance=ExtResource("2_idj7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.087017, 0.45316887, -50.739845)
 
 [node name="Cube_Prototype_Large_A21" parent="Ground" unique_id=83075704 instance=ExtResource("2_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.087017, 0.45316887, -54.739845)
@@ -236,29 +227,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.087017, 0.45316887, -54.7
 [node name="Cube_Prototype_Large_A22" parent="Ground" unique_id=2001942442 instance=ExtResource("2_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.087017, 0.45316887, -50.739845)
 
-[node name="Cube_Prototype_Large_A25" parent="Ground" unique_id=23459757 instance=ExtResource("2_idj7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.087017, 0.45316887, -50.739845)
-
 [node name="Cube_Prototype_Large_A26" parent="Ground" unique_id=51452120 instance=ExtResource("2_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.087017, 0.45316887, -54.739845)
-
-[node name="Cube_Prototype_Large_A27" parent="Ground" unique_id=1683650593 instance=ExtResource("2_idj7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.087017, 0.45316887, -58.739845)
 
 [node name="Cube_Prototype_Large_A29" parent="Ground" unique_id=1202910131 instance=ExtResource("2_idj7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.087017, 0.45316887, -54.739845)
 
+[node name="Cube_Prototype_Large_A32" parent="Ground" unique_id=1053108758 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.087017, 0.45316887, -54.739845)
+
 [node name="Cube_Prototype_Large_A30" parent="Ground" unique_id=1591988423 instance=ExtResource("2_idj7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.556698, 0.45316887, -54.739845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.43807, 0.45316887, -54.739845)
 
 [node name="Cube_Prototype_Large_A31" parent="Ground" unique_id=527311923 instance=ExtResource("2_idj7w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.556698, 0.45316887, -54.739845)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.438065, 0.45316887, -54.739845)
+
+[node name="Cube_Prototype_Large_A34" parent="Ground" unique_id=7438007 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.438065, 1.4531689, -54.739845)
+
+[node name="Cube_Prototype_Large_A33" parent="Ground" unique_id=230483785 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.438065, 0.45316887, -54.739845)
+
+[node name="Cube_Prototype_Large_A37" parent="Ground" unique_id=255140218 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.438065, 0.45316887, -54.739845)
+
+[node name="Cube_Prototype_Large_A35" parent="Ground" unique_id=1996119874 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.438065, 0.45316887, -58.739845)
+
+[node name="Cube_Prototype_Large_A36" parent="Ground" unique_id=1593128003 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.438065, 0.45316887, -50.739845)
 
 [node name="Primitive_Beam2" parent="Ground" unique_id=1217036550 instance=ExtResource("3_frkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.509727, 3.4723907, -54.73925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.391098, 3.4723907, -54.73925)
 
 [node name="Primitive_Beam3" parent="Ground" unique_id=306447197 instance=ExtResource("3_frkhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.02609, 3.4723907, -54.73925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.90746, 3.4723907, -54.73925)
 
 [node name="MovingPlatform" type="AnimatableBody3D" parent="." unique_id=358233644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.377, 0, -39)
@@ -337,16 +340,24 @@ type = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005584717, 1.9167972, -19.19583)
 type = 2
 
+[node name="Collectible11" parent="Collecibles" unique_id=718337049 instance=ExtResource("7_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005584717, 2.9167972, -4.1958294)
+type = 2
+
 [node name="Collectible7" parent="Collecibles" unique_id=97717449 instance=ExtResource("7_jw32o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.097761, 5.5793185, -54.72925)
 type = 2
 
 [node name="Collectible8" parent="Collecibles" unique_id=713718150 instance=ExtResource("7_jw32o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.085144, 5.5793185, -54.744396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.085144, 5.5793185, -54.744396)
 type = 2
 
 [node name="Collectible9" parent="Collecibles" unique_id=189132186 instance=ExtResource("7_jw32o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.54484, 5.5793185, -54.72925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.426212, 5.5793185, -54.72925)
+type = 2
+
+[node name="Collectible10" parent="Collecibles" unique_id=1745451864 instance=ExtResource("7_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.37601, 5.5793185, -54.72925)
 type = 2
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1177560698]
@@ -521,7 +532,23 @@ surface_material_override/0 = SubResource("StandardMaterial3D_frkhe")
 surface_material_override/1 = SubResource("StandardMaterial3D_1p5hy")
 surface_material_override/2 = SubResource("StandardMaterial3D_h1m7h")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacle" unique_id=626185496]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacle/Obstacle" index="1" unique_id=626185496]
+root_node = NodePath("../..")
+callback_mode_process = 0
+libraries/ = SubResource("AnimationLibrary_1p5hy")
+autoplay = &"rotate"
+
+[node name="Obstacle2" parent="." unique_id=697074787 instance=ExtResource("12_grg3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.423935, 4.5948935, -54.7861)
+
+[node name="Obstacle" parent="Obstacle2" index="0" unique_id=1632175578]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.15049934, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_frkhe")
+surface_material_override/1 = SubResource("StandardMaterial3D_1p5hy")
+surface_material_override/2 = SubResource("StandardMaterial3D_h1m7h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacle2/Obstacle" index="1" unique_id=624180223]
+root_node = NodePath("../..")
 callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_1p5hy")
 autoplay = &"rotate"
@@ -530,7 +557,7 @@ autoplay = &"rotate"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3012812, -0.06852436)
 
 [node name="Checkpoint3" parent="Checkpoints" unique_id=40159795 instance=ExtResource("14_1p5hy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049985886, 0.3012812, -15.156064)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.392098, 0.3012812, -30.711815)
 
 [node name="Checkpoint2" parent="Checkpoints" unique_id=1686611236 instance=ExtResource("14_1p5hy")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.087712586, 0.3012812, -54.658394)
@@ -539,7 +566,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.0
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -32.029602, 4.046714, -54.658394)
 
 [node name="Checkpoint5" parent="Checkpoints" unique_id=366133070 instance=ExtResource("14_1p5hy")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -58.529892, 4.046714, -54.658394)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -83.41126, 5.046714, -54.658394)
 is_final_checkpoint = true
 
 [connection signal="body_entered" from="DeathZone" to="GameManager" method="respawn_player"]
@@ -549,3 +576,4 @@ is_final_checkpoint = true
 [connection signal="pressed" from="UI/Menu" to="GameManager" method="_on_menu_pressed"]
 
 [editable path="Obstacle"]
+[editable path="Obstacle2"]
