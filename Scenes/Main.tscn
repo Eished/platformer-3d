@@ -1,0 +1,512 @@
+[gd_scene format=3 uid="uid://dh1ietjj3p6e2"]
+
+[ext_resource type="Environment" uid="uid://cf1lxrkqdtclj" path="res://environment.tres" id="1_h1m7h"]
+[ext_resource type="PackedScene" uid="uid://d1gp8q8lvlenu" path="res://Scenes/Player.tscn" id="1_r150o"]
+[ext_resource type="PackedScene" uid="uid://bhm4axwm2m2oo" path="res://Assets/Models/Cube_Prototype_Large_A.gltf" id="2_idj7w"]
+[ext_resource type="PackedScene" uid="uid://c04v8exbeb23b" path="res://Assets/Models/Primitive_Beam.gltf" id="3_frkhe"]
+[ext_resource type="PackedScene" uid="uid://ch4r3pmrkegbv" path="res://Assets/Models/Floor.gltf" id="3_kln2b"]
+[ext_resource type="Script" uid="uid://cr1j5qmm8oia8" path="res://Scripts/game_manager.gd" id="4_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://bo8cs0hjgjmxi" path="res://Assets/Models/Primitive_Floor.gltf" id="5_pbw6q"]
+[ext_resource type="Script" uid="uid://dq1umj2s5r5w4" path="res://Scripts/jump_pad.gd" id="5_v1gob"]
+[ext_resource type="PackedScene" uid="uid://o2141n2w2y7c" path="res://Scenes/Collectible.tscn" id="7_jw32o"]
+[ext_resource type="Texture2D" uid="uid://c864jkg43b5e1" path="res://Assets/Textures/diamond_icon.png" id="8_50glp"]
+[ext_resource type="Theme" uid="uid://cy4m0afq16xlh" path="res://main_ui.tres" id="9_vy5pj"]
+[ext_resource type="Texture2D" uid="uid://bb8x71nhcsqic" path="res://Assets/Textures/coin_icon.png" id="10_4kpch"]
+[ext_resource type="Texture2D" uid="uid://c43x7rs4jvlu5" path="res://Assets/Textures/cherry_icon.png" id="11_grg3l"]
+[ext_resource type="PackedScene" uid="uid://b2gclblfx8hdg" path="res://Assets/Models/obstacle.glb" id="12_grg3l"]
+[ext_resource type="PackedScene" uid="uid://bc17csyvje57w" path="res://Scenes/Checkpoint.tscn" id="14_1p5hy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rgh2o"]
+size = Vector3(3.9394531, 0.4239502, 3.9476318)
+
+[sub_resource type="Animation" id="Animation_kln2b"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(12.377, 0, -39)]
+}
+
+[sub_resource type="Animation" id="Animation_rgh2o"]
+resource_name = "moving"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(12.377, 0.191, -37.26), Vector3(12.377, 0.191, -46.7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pbw6q"]
+_data = {
+&"RESET": SubResource("Animation_kln2b"),
+&"moving": SubResource("Animation_rgh2o")
+}
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_pbw6q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pbw6q"]
+size = Vector3(3.0217285, 0.39648438, 3.0546875)
+
+[sub_resource type="Curve" id="Curve_v1gob"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8558612, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_jw32o"]
+curve = SubResource("Curve_v1gob")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jw32o"]
+particle_flag_align_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.1
+emission_ring_radius = 0.2
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+angle_min = -29.99999
+angle_max = 30.000011
+direction = Vector3(0, 1, 0)
+spread = 30.938
+initial_velocity_min = 5.0
+initial_velocity_max = 6.0
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_jw32o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50glp"]
+albedo_color = Color(1, 0.9137255, 0.46666667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vy5pj"]
+material = SubResource("StandardMaterial3D_50glp")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frkhe"]
+albedo_color = Color(1, 0.5254902, 0.7529412, 1)
+metallic = 0.85
+roughness = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1p5hy"]
+albedo_color = Color(0.36862746, 0.5568628, 1, 1)
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1m7h"]
+albedo_color = Color(1, 1, 0.2627451, 1)
+albedo_texture_force_srgb = true
+metallic = 0.86
+roughness = 0.35
+
+[sub_resource type="Animation" id="Animation_grg3l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Obstacle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_frkhe"]
+resource_name = "rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Obstacle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 7.8539815, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1p5hy"]
+_data = {
+&"RESET": SubResource("Animation_grg3l"),
+&"rotate": SubResource("Animation_frkhe")
+}
+
+[node name="Main" type="Node3D" unique_id=1490249451]
+metadata/_edit_vertical_guides_ = [960.0]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2097973897]
+environment = ExtResource("1_h1m7h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1559026450]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1894538322 instance=ExtResource("1_r150o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028293848, -0.29070902, 0.18565273)
+
+[node name="Ground" type="Node3D" parent="." unique_id=1977228182]
+
+[node name="Cube_Prototype_Large_A2" parent="Ground" unique_id=1188653921 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, 0)
+
+[node name="Cube_Prototype_Large_A3" parent="Ground" unique_id=952546626 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, -3.9973974)
+
+[node name="Cube_Prototype_Large_A4" parent="Ground" unique_id=1011859179 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, -7.9747014)
+
+[node name="Cube_Prototype_Large_A5" parent="Ground" unique_id=1277417366 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, -15.208878)
+
+[node name="Cube_Prototype_Large_A6" parent="Ground" unique_id=1088632623 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, -19.208878)
+
+[node name="Cube_Prototype_Large_A7" parent="Ground" unique_id=959269951 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, -26.739845)
+
+[node name="Cube_Prototype_Large_A8" parent="Ground" unique_id=1772925707 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3, -30.739845)
+
+[node name="Cube_Prototype_Large_A9" parent="Ground" unique_id=625656407 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.363129, -3.3, -30.739845)
+
+[node name="Cube_Prototype_Large_A10" parent="Ground" unique_id=151172165 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.363129, -3.3, -30.739845)
+
+[node name="Cube_Prototype_Large_A11" parent="Ground" unique_id=791440924 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.363129, -3.3, -54.739845)
+
+[node name="Cube_Prototype_Large_A13" parent="Ground" unique_id=2001583120 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.363129, -3.3, -54.739845)
+
+[node name="Cube_Prototype_Large_A14" parent="Ground" unique_id=988141852 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.363129, -3.3, -50.739845)
+
+[node name="Cube_Prototype_Large_A12" parent="Ground" unique_id=1013051668 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.363129, -3.3, -50.739845)
+
+[node name="Cube_Prototype_Large_A16" parent="Ground" unique_id=91786544 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.065586, -3.3, -54.739845)
+
+[node name="Cube_Prototype_Large_A24" parent="Ground" unique_id=586536297 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06558609, -3.3, -54.739845)
+
+[node name="Cube_Prototype_Large_A23" parent="Ground" unique_id=110231949 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.065586, -3.3, -54.739845)
+
+[node name="Cube_Prototype_Large_A15" parent="Ground" unique_id=860902397 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.087017, 0.45316887, -54.739845)
+
+[node name="Cube_Prototype_Large_A17" parent="Ground" unique_id=1166056388 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.087017, 0.45316887, -54.739845)
+
+[node name="Cube_Prototype_Large_A19" parent="Ground" unique_id=1894274214 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.087017, 0.45316887, -58.739845)
+
+[node name="Cube_Prototype_Large_A20" parent="Ground" unique_id=704741657 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.087017, 0.45316887, -58.739845)
+
+[node name="Cube_Prototype_Large_A18" parent="Ground" unique_id=1249421670 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.087017, 0.45316887, -50.739845)
+
+[node name="Cube_Prototype_Large_A21" parent="Ground" unique_id=83075704 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.087017, 0.45316887, -54.739845)
+
+[node name="Cube_Prototype_Large_A22" parent="Ground" unique_id=2001942442 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.087017, 0.45316887, -50.739845)
+
+[node name="Cube_Prototype_Large_A25" parent="Ground" unique_id=23459757 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.087017, 0.45316887, -50.739845)
+
+[node name="Cube_Prototype_Large_A26" parent="Ground" unique_id=51452120 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.087017, 0.45316887, -54.739845)
+
+[node name="Cube_Prototype_Large_A27" parent="Ground" unique_id=1683650593 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.087017, 0.45316887, -58.739845)
+
+[node name="Cube_Prototype_Large_A29" parent="Ground" unique_id=1202910131 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.087017, 0.45316887, -54.739845)
+
+[node name="Cube_Prototype_Large_A30" parent="Ground" unique_id=1591988423 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.556698, 0.45316887, -54.739845)
+
+[node name="Cube_Prototype_Large_A31" parent="Ground" unique_id=527311923 instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.556698, 0.45316887, -54.739845)
+
+[node name="Primitive_Beam2" parent="Ground" unique_id=1217036550 instance=ExtResource("3_frkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.509727, 3.4723907, -54.73925)
+
+[node name="Primitive_Beam3" parent="Ground" unique_id=306447197 instance=ExtResource("3_frkhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.02609, 3.4723907, -54.73925)
+
+[node name="MovingPlatform" type="AnimatableBody3D" parent="." unique_id=358233644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.377, 0, -39)
+metadata/_edit_group_ = true
+
+[node name="Floor3" parent="MovingPlatform" unique_id=593278386 instance=ExtResource("3_kln2b")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlatform" unique_id=1423480245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.292, 0)
+shape = SubResource("BoxShape3D_rgh2o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform" unique_id=1279575924]
+libraries/ = SubResource("AnimationLibrary_pbw6q")
+autoplay = &"moving"
+
+[node name="DeathZone" type="Area3D" parent="." unique_id=1976535731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" unique_id=70174140]
+shape = SubResource("WorldBoundaryShape3D_pbw6q")
+
+[node name="GameManager" type="Node3D" parent="." unique_id=215717515 node_paths=PackedStringArray("item_labels", "win_label_title", "restart_btn", "menu_btn", "win_bg_layer")]
+script = ExtResource("4_rgh2o")
+item_labels = {
+"CHERRY": NodePath("../UI/PanelContainer/VBoxContainer/CHERRY/Label3"),
+"COIN": NodePath("../UI/PanelContainer/VBoxContainer/COIN/Label2"),
+"DIAMOND": NodePath("../UI/PanelContainer/VBoxContainer/DIAMOND/Label")
+}
+win_label_title = NodePath("../UI/WinLabel")
+restart_btn = NodePath("../UI/Restart")
+menu_btn = NodePath("../UI/Menu")
+win_bg_layer = NodePath("../UI/ColorRect")
+
+[node name="JumpPad" type="Area3D" parent="." unique_id=105485185 node_paths=PackedStringArray("particle_system")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.009820998, -54.8)
+script = ExtResource("5_v1gob")
+particle_system = NodePath("GPUParticles3D")
+metadata/_edit_group_ = true
+
+[node name="Primitive_Floor2" parent="JumpPad" unique_id=990907118 instance=ExtResource("5_pbw6q")]
+transform = Transform3D(0.75, 0, 0, 0, 0.2, 0, 0, 0, 0.75, 0, 0.7, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpPad" unique_id=507913762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("BoxShape3D_pbw6q")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="JumpPad" unique_id=1824242932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90375626, 0)
+emitting = false
+amount = 40
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_jw32o")
+draw_pass_1 = SubResource("BoxMesh_vy5pj")
+
+[node name="Collecibles" type="Node3D" parent="." unique_id=72819492]
+
+[node name="Collectible" parent="Collecibles" unique_id=524510147 instance=ExtResource("7_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.057339, 1.9167972, -54.743214)
+
+[node name="Collectible2" parent="Collecibles" unique_id=383224703 instance=ExtResource("7_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.354652, 1.9167972, -54.75502)
+type = 1
+
+[node name="Collectible4" parent="Collecibles" unique_id=1159206124 instance=ExtResource("7_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.355192, 1.9167972, -30.768051)
+type = 2
+
+[node name="Collectible5" parent="Collecibles" unique_id=2010401631 instance=ExtResource("7_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0069675446, 1.9167972, -30.768051)
+type = 2
+
+[node name="Collectible6" parent="Collecibles" unique_id=369781925 instance=ExtResource("7_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005584717, 1.9167972, -19.19583)
+type = 2
+
+[node name="Collectible7" parent="Collecibles" unique_id=97717449 instance=ExtResource("7_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.097761, 5.5793185, -54.72925)
+type = 2
+
+[node name="Collectible8" parent="Collecibles" unique_id=713718150 instance=ExtResource("7_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.085144, 5.5793185, -54.744396)
+type = 2
+
+[node name="Collectible9" parent="Collecibles" unique_id=189132186 instance=ExtResource("7_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.54484, 5.5793185, -54.72925)
+type = 2
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1177560698]
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=1502034536]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.32156864)
+
+[node name="PanelContainer" type="PanelContainer" parent="UI" unique_id=771973772]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -230.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = 341.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer" unique_id=1499128946]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="DIAMOND" type="HBoxContainer" parent="UI/PanelContainer/VBoxContainer" unique_id=391394262]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/PanelContainer/VBoxContainer/DIAMOND" unique_id=1404431550]
+layout_mode = 2
+texture = ExtResource("8_50glp")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UI/PanelContainer/VBoxContainer/DIAMOND" unique_id=1513546534]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("9_vy5pj")
+text = "0"
+vertical_alignment = 1
+
+[node name="COIN" type="HBoxContainer" parent="UI/PanelContainer/VBoxContainer" unique_id=1357116143]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UI/PanelContainer/VBoxContainer/COIN" unique_id=953679896]
+layout_mode = 2
+texture = ExtResource("10_4kpch")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="UI/PanelContainer/VBoxContainer/COIN" unique_id=588724361]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("9_vy5pj")
+theme_type_variation = &"CoinLabel"
+text = "0"
+vertical_alignment = 1
+
+[node name="CHERRY" type="HBoxContainer" parent="UI/PanelContainer/VBoxContainer" unique_id=1550598907]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="UI/PanelContainer/VBoxContainer/CHERRY" unique_id=1999197115]
+layout_mode = 2
+texture = ExtResource("11_grg3l")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label3" type="Label" parent="UI/PanelContainer/VBoxContainer/CHERRY" unique_id=1390101574]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("9_vy5pj")
+theme_type_variation = &"CherryLabel"
+text = "0"
+vertical_alignment = 1
+
+[node name="WinLabel" type="Label" parent="UI" unique_id=1787418863]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -320.0
+offset_right = 320.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 161
+text = "恭喜通关"
+
+[node name="Restart" type="Button" parent="UI" unique_id=168178414]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -36.5
+offset_right = 132.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_vy5pj")
+text = "重新开始"
+
+[node name="Menu" type="Button" parent="UI" unique_id=607744777]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 119.0
+offset_right = 100.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_vy5pj")
+text = "主菜单"
+
+[node name="Obstacle" parent="." unique_id=1801536714 instance=ExtResource("12_grg3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.175125, 4.5948935, -54.7861)
+
+[node name="Obstacle" parent="Obstacle" index="0" unique_id=726772112]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.15049934, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_frkhe")
+surface_material_override/1 = SubResource("StandardMaterial3D_1p5hy")
+surface_material_override/2 = SubResource("StandardMaterial3D_h1m7h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Obstacle" unique_id=626185496]
+callback_mode_process = 0
+libraries/ = SubResource("AnimationLibrary_1p5hy")
+autoplay = &"rotate"
+
+[node name="Checkpoints" type="Node3D" parent="." unique_id=1352117097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3012812, -0.06852436)
+
+[node name="Checkpoint3" parent="Checkpoints" unique_id=40159795 instance=ExtResource("14_1p5hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049985886, 0.3012812, -15.156064)
+
+[node name="Checkpoint2" parent="Checkpoints" unique_id=1686611236 instance=ExtResource("14_1p5hy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.087712586, 0.3012812, -54.658394)
+
+[node name="Checkpoint4" parent="Checkpoints" unique_id=1747367233 instance=ExtResource("14_1p5hy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -32.029602, 4.046714, -54.658394)
+
+[node name="Checkpoint5" parent="Checkpoints" unique_id=366133070 instance=ExtResource("14_1p5hy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -58.529892, 4.046714, -54.658394)
+is_final_checkpoint = true
+
+[connection signal="body_entered" from="DeathZone" to="GameManager" method="respawn_player"]
+[connection signal="body_entered" from="JumpPad" to="JumpPad" method="_on_body_entered"]
+[connection signal="pressed" from="UI/Restart" to="GameManager" method="restart"]
+[connection signal="pressed" from="UI/Restart" to="GameManager" method="_on_restart_pressed"]
+[connection signal="pressed" from="UI/Menu" to="GameManager" method="_on_menu_pressed"]
+
+[editable path="Obstacle"]
