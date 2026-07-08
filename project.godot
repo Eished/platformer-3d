@@ -65,6 +65,10 @@ ui_down={
 
 pointing/emulate_touch_from_mouse=true
 
+[internationalization]
+
+locale/include_text_server_data=true
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

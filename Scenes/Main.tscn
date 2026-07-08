@@ -599,7 +599,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.0
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -32.029602, 4.046714, -54.658394)
 
 [node name="Checkpoint6" parent="Checkpoints" unique_id=1541364182 instance=ExtResource("14_1p5hy")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -69.44029, 4.046714, -42.658394)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -67.44029, 4.046714, -42.658394)
 
 [node name="Checkpoint5" parent="Checkpoints" unique_id=366133070 instance=ExtResource("14_1p5hy")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -36.411263, 7.046714, -42.658394)
