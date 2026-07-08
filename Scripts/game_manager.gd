@@ -19,6 +19,12 @@ var saved_checkpoints: Array[Checkpoint] = []
 var is_game_over: bool = false
 var is_paused: bool = false
 
+var start_time: int = 0
+var elapsed_time: float = 0
+var start_paused_time: float = 0
+var paused_time: float = 0
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if instance == null:
@@ -30,6 +36,8 @@ func _ready() -> void:
 	restart_btn.visible = false
 	menu_btn.visible = false
 	win_bg_layer.visible = false
+	
+	start_timer()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,6 +64,7 @@ func collect_item(item_type):
 	item_labels[item_type].text = str(collected_items[item_type])
 	
 func win_game():
+	stop_timer()
 	win_bg_layer.visible = true
 	win_label_title.visible = true
 	is_game_over = true
@@ -83,10 +92,34 @@ func _input(event: InputEvent) -> void:
 				restart_btn.visible = true
 				menu_btn.visible = true
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				pause_timer()
 			else:
 				win_bg_layer.visible = false
 				is_paused = false
 				restart_btn.visible = false
 				menu_btn.visible = false
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+				resume_timer()
 		
+
+func start_timer():
+	start_time = Time.get_ticks_msec()
+	elapsed_time = 0
+
+func pause_timer():
+	start_paused_time = Time.get_ticks_msec()
+
+func resume_timer():
+	paused_time += Time.get_ticks_msec() - start_paused_time
+
+func stop_timer():
+	elapsed_time = (
+		Time.get_ticks_msec() - start_time - paused_time
+	) / 1000.0
+
+func get_time():
+	if not is_game_over:
+		return (
+			Time.get_ticks_msec() - start_time - paused_time
+		) / 1000.0
+	return elapsed_time

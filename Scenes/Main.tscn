@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c43x7rs4jvlu5" path="res://Assets/Textures/cherry_icon.png" id="11_grg3l"]
 [ext_resource type="PackedScene" uid="uid://b2gclblfx8hdg" path="res://Assets/Models/obstacle.glb" id="12_grg3l"]
 [ext_resource type="PackedScene" uid="uid://bc17csyvje57w" path="res://Scenes/Checkpoint.tscn" id="14_1p5hy"]
+[ext_resource type="Script" uid="uid://bm0k15oa4nikt" path="res://Scripts/timer.gd" id="14_erwvk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rgh2o"]
 size = Vector3(3.9394531, 0.4239502, 3.9476318)
@@ -329,10 +330,13 @@ shape = SubResource("BoxShape3D_pbw6q")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="JumpPad" unique_id=1824242932]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90375626, 0)
 emitting = false
-amount = 20
+amount = 10
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
+fixed_fps = 15
+interpolate = false
+fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_jw32o")
 draw_pass_1 = SubResource("BoxMesh_vy5pj")
 
@@ -541,7 +545,7 @@ shape = SubResource("RectangleShape2D_erwvk")
 action = "ui_accept"
 visibility_mode = 1
 
-[node name="Label" type="Label" parent="UI" unique_id=554994000]
+[node name="Tips" type="Label" parent="UI" unique_id=554994000]
 offset_left = 1681.0
 offset_top = 364.0
 offset_right = 1907.0
@@ -551,10 +555,20 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 26
 text = "提示：
-键盘TAB切换鼠标焦点，ESC查看菜单
+键盘TAB切换鼠标焦点，ESC查看菜单，wasd或方向键控制人物，空格跳跃
 触屏左侧控制方向
 点击右侧空白跳跃"
 autowrap_mode = 2
+
+[node name="Timer" type="Label" parent="UI" unique_id=1366121165]
+offset_left = 27.0
+offset_top = 28.0
+offset_right = 263.0
+offset_bottom = 83.0
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 54
+text = "00:00:00"
+script = ExtResource("14_erwvk")
 
 [node name="Obstacle" parent="." unique_id=1801536714 instance=ExtResource("12_grg3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.175125, 4.5948935, -54.7861)

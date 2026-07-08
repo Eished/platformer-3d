@@ -76,7 +76,7 @@ script = ExtResource("1_i3j2t")
 [node name="checkpoint" parent="." unique_id=822969752 instance=ExtResource("2_14q6d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0007181, 0.64650106, 0.978479)
 
-[node name="Flag" parent="checkpoint" index="0" unique_id=1425235392]
+[node name="Flag" parent="checkpoint" index="0" unique_id=414760994]
 surface_material_override/0 = SubResource("StandardMaterial3D_i3j2t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679033730]
